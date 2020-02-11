@@ -1,8 +1,18 @@
 .even {
     background-color: green;
-    
+    font-size: 24px;
+    color: white;
+
 }
 
 .odd {
     background-color: blue;
+    font-size: 24px;
+    color: white;
+}
+
+.BAN {
+    font-size: 48px;
+    color: red;
+
 }
