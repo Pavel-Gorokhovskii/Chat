@@ -20,7 +20,7 @@
 
     $banList = file('ban.txt');
 
-    if (in_array($value, $banList) == in_array('REMOTE_ADDR', $_SERVER)) {
+    if (in_array($_SERVER['REMOTE_ADDR'], $banList)) {
         echo "<div class = 'BAN'> Вас забанили </div>";
     } else {
 
