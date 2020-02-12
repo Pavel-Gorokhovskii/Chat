@@ -15,7 +15,7 @@
     <?php
     $mes_arr = file("text.txt");
     foreach ($mes_arr as $key => $value) {
-        $buf = explode(':', $value);
+        $buf = explode('| ', $value);
 
 
         echo "<div class = '" . (($key % 2) ? 'odd' : 'even') . "'> $buf[2] : $buf[3] </div>";
