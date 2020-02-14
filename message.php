@@ -17,11 +17,16 @@
         <input class="submit" type="submit" value="OK">
     </form>
     <?php
+    include('config.php');
     $banList = file('ban.txt');
     if (in_array($_SERVER['REMOTE_ADDR'], $banList)) {
         echo "<div class = 'BAN'> Вас забанили </div>";
-    } else {
-        file_put_contents('text.txt', $_SERVER['HTTP_USER_AGENT'] . "| " . $_SERVER['REMOTE_ADDR'] . "| " . $_POST['userName'] . "| " . $_POST['message'] . "\n", FILE_APPEND);
+    } elseif (!empty($_POST['message']) && !empty($_POST['userName'])) {
+        file_put_contents('text.txt', $_SERVER['HTTP_USER_AGENT'] .
+            $separate . $_SERVER['REMOTE_ADDR'] .
+            $separate . $_POST['userName'] .
+            $separate . $_POST['message'] .
+            $separate . time() . "\n", FILE_APPEND);
     }
     ?>
 </body>
