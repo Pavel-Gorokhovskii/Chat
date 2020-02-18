@@ -17,9 +17,9 @@
     $mes_arr = file("text.txt");
     foreach ($mes_arr as $key => $value) {
         $buf = explode($separate, $value);
-        $date = date(' H:i:s d.M.Y ', $buf[4]);
+        $date = date(' H:i:s d.m.Y ', $buf[4]);
 
-        echo "<div class = '" . (($key % 2) ? 'odd' : 'even') . "'>" . "$date $buf[2] : $buf[3] </div>";
+        echo "<div class = '" . (($key % 2) ? 'odd' : 'even') . "'>" . "$date $buf[2]: $buf[3] </div>";
     }
     ?>
 </body>
