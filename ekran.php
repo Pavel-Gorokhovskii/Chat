@@ -14,12 +14,14 @@
 <body>
     <?php
     include('config.php');
+    include('bbCodeFunction.php');
     $mes_arr = file("text.txt");
     foreach ($mes_arr as $key => $value) {
         $buf = explode($separate, $value);
         $date = date(' H:i:s d.m.Y ', $buf[4]);
+        $text = "$date $buf[2]: $buf[3]";
 
-        echo "<div class = '" . (($key % 2) ? 'odd' : 'even') . "'>" . "$date $buf[2]: $buf[3] </div>";
+        echo "<div class = '" . (($key % 2) ? 'odd' : 'even') . "'>" . bbCode(smile(censor(htmlspecialchars($text)))) . "</div>";
     }
     ?>
 </body>
