@@ -21,7 +21,7 @@
         $date = date(' H:i:s d.m.Y ', $buf[4]);
         $text = "$date $buf[2]: $buf[3]";
 
-        echo "<div class = '" . (($key % 2) ? 'odd' : 'even') . "'>" . bbCode(smile(censor(htmlspecialchars($text)))) . "</div>";
+        echo "<div class = '" . (($key % 2) ? 'odd' : 'even') . "'>" . bbCode(smile(censor(MarcDown(htmlspecialchars($text))))) . "</div>";
     }
     ?>
 </body>
