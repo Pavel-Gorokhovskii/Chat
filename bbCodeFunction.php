@@ -35,3 +35,34 @@ function url($text)
     $text = preg_replace($pat, $rep, $text);
     return $text;
 }
+function saveXML($userAgent, $remoteAddr, $name, $text, $date)
+{
+    $str = <<<XML
+\n<msg>
+<userAgent>$userAgent</userAgent>
+<addr>$remoteAddr</addr>
+<name>$name</name>
+<text>$text</text>
+<date>$date</date>
+</msg>
+XML;
+    return file_put_contents('data.xml', $str, FILE_APPEND);
+}
+function readXML($f)
+{
+    preg_match_all(
+        '/<msg>.*?<text>(.*?)<\/text>.*?<name>(.*?)<\/name>.*?<date>(.*?)<\/date>.*?<\/msg>/ius',
+        file_get_contents($f),
+        $matches
+    );
+
+    $arr = [];
+
+    foreach ($matches[1] as $key => $value) {
+        $arr[$key]['text'] = $value;
+        $arr[$key]['name'] = $matches[2][$key];
+        $arr[$key]['date'] = $matches[3][$key];
+    }
+
+    return $arr;
+}

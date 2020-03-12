@@ -15,14 +15,15 @@
     <?php
     include('config.php');
     include('bbCodeFunction.php');
-    $mes_arr = file("text.txt");
-    foreach ($mes_arr as $key => $value) {
-        $buf = explode($separate, $value);
-        $date = date(' H:i:s d.m.Y ', $buf[4]);
-        $text = "$date $buf[2]: $buf[3]";
-
-        echo "<div class = '" . (($key % 2) ? 'odd' : 'even') . "'>" . bbCode(smile(censor(MarcDown(htmlspecialchars($text))))) . "</div>";
+    foreach (readXML('data.xml') as $value) {
+        $date = $value["date"];
+        $name = $value["name"];
+        $text = $value["text"];
+        $string = "$date $name: $text";
+        echo "<div class = '" . (($key % 2) ? 'odd' : 'even') . "'>" . bbCode(smile(censor(MarcDown(htmlspecialchars($string))))) . "<br></div>";
     }
+    //echo "<div class = '" . (($key % 2) ? 'odd' : 'even') . "'>" . bbCode(smile(censor(MarcDown(htmlspecialchars($value["text"]))))) . "</div>";
+
     ?>
 </body>
 

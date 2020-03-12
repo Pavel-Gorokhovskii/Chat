@@ -18,15 +18,19 @@
     </form>
     <?php
     include('config.php');
+    include('bbCodeFunction.php');
     $banList = file('ban.txt');
     if (in_array($_SERVER['REMOTE_ADDR'], $banList)) {
         echo "<div class = 'BAN'> Вас забанили </div>";
     } elseif (!empty($_POST['text']) && !empty($_POST['userName'])) {
-        file_put_contents('text.txt', $_SERVER['HTTP_USER_AGENT'] .
-            $separate . $_SERVER['REMOTE_ADDR'] .
-            $separate . $_POST['userName'] .
-            $separate . $_POST['text'] .
-            $separate . time() . "\n", FILE_APPEND);
+        saveXML(
+            $_SERVER['HTTP_USER_AGENT'],
+            $_SERVER['REMOTE_ADDR'],
+            $_POST['userName'],
+            $_POST['text'],
+            date('d.m.Y H:i:s'),
+            FILE_APPEND
+        );
     }
     ?>
 </body>
