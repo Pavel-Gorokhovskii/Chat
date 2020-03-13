@@ -51,7 +51,7 @@ XML;
 function readXML($f)
 {
     preg_match_all(
-        '/<msg>.*?<text>(.*?)<\/text>.*?<name>(.*?)<\/name>.*?<date>(.*?)<\/date>.*?<\/msg>/ius',
+        '/<msg>.*?<userAgent>(.*?)<\/userAgent>.*?<addr>(.*?)<\/addr>.*?<name>(.*?)<\/name>.*?<text>(.*?)<\/text>.*?<date>(.*?)<\/date>.*?<\/msg>/ius',
         file_get_contents($f),
         $matches
     );
@@ -59,9 +59,11 @@ function readXML($f)
     $arr = [];
 
     foreach ($matches[1] as $key => $value) {
-        $arr[$key]['text'] = $value;
-        $arr[$key]['name'] = $matches[2][$key];
-        $arr[$key]['date'] = $matches[3][$key];
+        $arr[$key]['userAgent'] = $value;
+        $arr[$key]['addr'] = $matches[2][$key];
+        $arr[$key]['name'] = $matches[3][$key];
+        $arr[$key]['text'] = $matches[4][$key];
+        $arr[$key]['date'] = $matches[5][$key];
     }
 
     return $arr;
