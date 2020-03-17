@@ -6,6 +6,7 @@ function bbCode($text)
     $text = preg_replace($pat, $rep, $text);
     return $text;
 }
+
 function smile($text)
 {
     $arr = ['/\:\-\)/', '/\:\-\(/', '/\:\)/', '/\:\(/'];
@@ -13,6 +14,7 @@ function smile($text)
     $text =  preg_replace($arr, $arrImg, $text);
     return $text;
 }
+
 function censor($text)
 {
     if (preg_match('/(дурак|редиска)/i', $text)) {
@@ -21,6 +23,7 @@ function censor($text)
         return $text;
     }
 }
+
 function MarcDown($text)
 {
     $pat = ['/\*\*(.*)\*\*/i', '/\*(.*)\*/i', '/\~\~(.*)\~\~/i'];
@@ -28,6 +31,7 @@ function MarcDown($text)
     $text = preg_replace($pat, $rep, $text);
     return $text;
 }
+
 function url($text)
 {
     $pat =  ['/(https|http)\:\/\/.*/i', '/(https|http)\:\/\/.*(jpg|png|gif)/i'];
@@ -35,6 +39,7 @@ function url($text)
     $text = preg_replace($pat, $rep, $text);
     return $text;
 }
+
 function saveXML($userAgent, $remoteAddr, $name, $text, $date)
 {
     $str = <<<XML
@@ -48,6 +53,7 @@ function saveXML($userAgent, $remoteAddr, $name, $text, $date)
 XML;
     return file_put_contents('data.xml', $str, FILE_APPEND);
 }
+
 function readXML($f)
 {
     preg_match_all(
