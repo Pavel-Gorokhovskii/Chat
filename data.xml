@@ -111,3 +111,10 @@
 <text>4</text>
 <date>13.03.2020 18:46:05</date>
 </msg>
+<msg>
+<userAgent>Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 YaBrowser/20.2.4.143 Yowser/2.5 Safari/537.36</userAgent>
+<addr>127.0.0.1</addr>
+<name>Павел</name>
+<text>Привет</text>
+<date>15.03.2020 11:19:35</date>
+</msg>
